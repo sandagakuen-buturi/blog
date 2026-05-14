@@ -1,0 +1,2 @@
+class Session < ApiApplicationController
+end
