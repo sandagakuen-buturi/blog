@@ -9,7 +9,7 @@ RUN apt-get update -qq && apt-get install -y \
   libsqlite3-dev \
   curl
 
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile ./
 
 RUN bundle install
 
