@@ -18,6 +18,13 @@ class Invite < ApplicationRecord
       end
       invites
     end
+
+    def find_valid_invite(token)
+      invite = find_by(token: token)
+      return nil if invite.nil? || invite.expired?
+
+      invite
+    end
   end
 
   def expired?
