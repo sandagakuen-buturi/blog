@@ -6,7 +6,7 @@ class Invite < ApplicationRecord
     def create_invite(email)
       token = SecureRandom.hex(16)
       invite = Invite.create(email: email, token: token)
-      InviteMailer.with(invite: invite).invite_email.deliver_later if invite.persisted?
+      InviteMailer.with(invite: invite).invite_email
       invite
     end
 

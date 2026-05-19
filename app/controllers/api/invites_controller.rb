@@ -12,11 +12,17 @@ class Api::InvitesController < ApiApplicationController
     render json: ApiApplicationHelper::Response.ok(message: "#{id} hello")
   end
 
-  def index
-    render json: ApiApplicationHelper::Response.ok(message: "index hello")
-  end
-
   def create
-
+    email = params[:email]
+    invite = Invite.create_invite(email)
+    begin
+      render json: ApiApplicationHelper::Response.ok(message: "Invite created", data: {
+        invite: invite
+      })
+    rescue Error => e
+      render json: ApiApplicationHelper::Response.error(message: "Failed to create invite", data: {
+        error: e.message
+      }), status: :internal_server_error
+    end
   end
 end
