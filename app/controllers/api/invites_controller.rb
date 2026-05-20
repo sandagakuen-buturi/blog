@@ -14,8 +14,9 @@ class Api::InvitesController < ApiApplicationController
 
   def create
     email = params[:email]
-    invite = Invite.create_invite(email)
+
     begin
+      invite = Invite.create_invite(email)
       render json: ApiApplicationHelper::Response.ok(message: "Invite created", data: {
         invite: invite
       })
