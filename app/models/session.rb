@@ -3,7 +3,9 @@ class Session < ApiApplicationController
 
   class << self
     def find_active_by_key(key)
-      active.find_by(key: key)
+      Rails.cache.fetch("session:#{key}", expires_in: 1.week) do
+        active.find_by(key: key)
+      end
     end
   end
 end
