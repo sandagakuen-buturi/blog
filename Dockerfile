@@ -15,6 +15,8 @@ RUN bundle install
 
 COPY . .
 
+RUN bundle install --gemfile /rails/Gemfile
+
 EXPOSE 3000
 
 CMD ["bash"]
