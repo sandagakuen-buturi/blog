@@ -9,13 +9,18 @@ RUN apt-get update -qq && apt-get install -y \
   libsqlite3-dev \
   curl
 
-COPY Gemfile ./
+# bunのインストール
+RUN curl -fsSL https://bun.sh/install | bash
+ENV PATH="/root/.bun/bin:$PATH"
 
+COPY Gemfile ./
 RUN bundle install
 
 COPY . .
-
 RUN bundle install --gemfile /rails/Gemfile
+
+# JSビルド
+RUN bun install && bun run build
 
 EXPOSE 3000
 
