@@ -1,4 +1,4 @@
-class Api::AuthController < ApplicationController
+class Public::Api::AuthController < ApplicationController
   def index
     if current_user
       render json: {

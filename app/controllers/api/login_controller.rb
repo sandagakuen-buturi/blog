@@ -1,4 +1,7 @@
-class Api::LoginController < ApiApplicationController
+class Public::Api::LoginController < ApiApplicationController
+  include ActionController::RequestForgeryProtection
+  protect_from_forgery with: :exception
+
   def create
     username = params[:username]
     password = params[:password].to_s

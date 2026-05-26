@@ -1,4 +1,4 @@
-class Api::RegisterController < ApiApplicationController
+class Public::Api::RegisterController < ApiApplicationController
   def create
     email = params[:email]
     if Invite.exists?(email: email)

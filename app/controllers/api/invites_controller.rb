@@ -1,4 +1,4 @@
-class Api::InvitesController < ApiApplicationController
+class Public::Api::InvitesController < ApiApplicationController
   def show
     token = params[:id]
     invite = Invite.find_valid_invite(token)
