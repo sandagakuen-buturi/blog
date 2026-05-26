@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Buturibu Blog" %></title>
+    <title><%= content_for(:title) || "物理部 | 三田学園" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -15,9 +15,17 @@
     <link rel="apple-touch-icon" href="/icon.png">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=account_box,search" />
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "shared/header" %>
+    <main class="pt-5 h-screen">
+      <%= yield %>
+    </main>
+    <%= render "shared/footer" %>
+
+    <script src="//cdn.tailwindcss.com"></script>
   </body>
 </html>
