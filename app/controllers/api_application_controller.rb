@@ -6,21 +6,27 @@ class ApiApplicationController < ActionController::API
 
   private
   def auth_middleware
+    begin
     auth_header = request.headers["Authorization"]
     unless auth_header.present? && auth_header.start_with?("Bearer ")
-      render json: ApiApplicationHelper::Response.unauthorized, status: :unauthorized
+      return render json: ApiApplicationHelper::Response.unauthorized, status: :unauthorized
     end
 
     token = auth_header.split(" ").last
     session = Session.find_active_by_key(token)
     unless session
-      render json: ApiApplicationHelper::Response.unauthorized, status: :unauthorized
+      return render json: ApiApplicationHelper::Response.unauthorized, status: :unauthorized
     end
 
     user = Auth.find_by(username: session.user)
     unless user
-      render json: ApiApplicationHelper::Response.unauthorized, status: :unauthorized
+      return render json: ApiApplicationHelper::Response.unauthorized, status: :unauthorized
     end
     @current_user = user
+    rescue Exception => e
+      return render json: ApiApplicationHelper::Response.error(message: "Authentication error", data: {
+        error: e.message
+      }), status: :internal_server_error
+    end
   end
 end
