@@ -14,13 +14,16 @@ RUN curl -fsSL https://bun.sh/install | bash
 ENV PATH="/root/.bun/bin:$PATH"
 
 COPY Gemfile ./
-RUN bundle install
-
 COPY . .
+
+# Gemfileのインストール
 RUN bundle install --gemfile /rails/Gemfile
 
 # JSビルド
 RUN bun install && bun run build
+
+# DBマイグレーション
+RUN rails db:migrate
 
 EXPOSE 3000
 
