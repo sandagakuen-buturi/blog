@@ -12,6 +12,6 @@ Allow: *
 # The sitemap.xml file helps search engines understand the structure of the website and find all the pages.
 Sitemap: https://buturi.sandagakuen.jp/sitemap.xml
 # The LLMs files provide information about the language models used on the site, which can be useful for bots that analyze the content and structure of the website.
-LLMs: http://buturi.sandagakuen.jp/llms.txt
+LLMs: https://buturi.sandagakuen.jp/llms.txt
 # The LLMs-full file provides more detailed information about the language models, which can be useful for bots that want to understand the capabilities and limitations of the models used on the site.
-LLMs-full: http://buturi.sandagakuen.jp/llms-full.txt
+LLMs-full: https://buturi.sandagakuen.jp/llms-full.txt
