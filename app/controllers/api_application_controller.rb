@@ -27,10 +27,11 @@ class ApiApplicationController < ActionController::API
           return render json: ApiApplicationHelper::Response.unauthorized, status: :unauthorized
         end
         @current_user = user
-      rescue Exception => e
-        render json: ApiApplicationHelper::Response.error(message: "Authentication error", data: {
-          error: e.message
-        }), status: :internal_server_error
+      rescue StandardError => e
+        Rails.logger.error("auth_middleware failed: #{e.class}")
+        render json: ApiApplicationHelper::Response.error(message: "Authentication error"),
+               status: :internal_server_error
+      end
       end
     end
   end
