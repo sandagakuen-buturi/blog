@@ -1,14 +1,11 @@
-class Public::Api::AuthController < ApplicationController
+class Api::AuthController < ApplicationController
   def index
-    if current_user
-      render json: {
-        id: current_user.id,
-        email: current_user.email,
-        name: current_user.name,
-        admin: current_user.admin?,
-      }
+    if @current_user
+      current_user = @current_user
+      delete current_user.password_hashed
+      render json: ApiApplicationHelper::Response.ok(data: current_user)
     else
-      render json: nil, status: :unauthorized
+      render json: ApiApplicationHelper::Response.unauthorized, status: :unauthorized
     end
   end
 end
