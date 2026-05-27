@@ -1,0 +1,11 @@
+<header class="sticky top-0 z-50 h-20 pl-6 border-b border-gray-300 flex items-center justify-between mb-5 w-full bg-white">
+  <a href="/">
+    <img src="/header_logo.svg" alt="三田学園ロゴ" class="h-12">
+  </a>
+
+  <div class="w-1/2 flex items-center justify-end h-full">
+    <a href="/ob" class="font-bold hover:text-gray-600 mr-4">卒業生・OBの方</a>
+    <%= render "shared/header_button", link: "/login", icon: "account_box", text: "ログイン" %>
+    <%= render "shared/header_button", link: "/search", icon: "search", text: "検索" %>
+  </div>
+</header>

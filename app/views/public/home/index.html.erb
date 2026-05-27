@@ -1,0 +1,11 @@
+<main class="h-[80%] flex flex-col items-center justify-center">
+  <% if @current_user.nil? %>
+    <h1 class="text-4xl font-bold mb-4">三田学園卒業生・OBの方へ</h1>
+    <p class="text-lg text-gray-600 mb-8">卒業生・OBの方は、以下のリンクからログインしてください。</p>
+    <a href="/login" class="px-6 py-3 bg-[#262626] text-white rounded hover:bg-[#333333] transition-colors duration-300">
+      ログイン
+    </a>
+  <% else %>
+    test
+  <% end %>
+</main>

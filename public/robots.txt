@@ -1,1 +1,18 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+
+User-agent: *
+Disallow: /admin/
+Disallow: /login
+Disallow: /login/
+Disallow: /register/
+Disallow: /password-reset/
+Disallow: /api/
+Allow: *
+
+# The following lines are for search engines and other bots to find the sitemap and LLMs files
+# The sitemap.xml file helps search engines understand the structure of the website and find all the pages.
+Sitemap: https://buturi.sandagakuen.jp/sitemap.xml
+# The LLMs files provide information about the language models used on the site, which can be useful for bots that analyze the content and structure of the website.
+LLMs: https://buturi.sandagakuen.jp/llms.txt
+# The LLMs-full file provides more detailed information about the language models, which can be useful for bots that want to understand the capabilities and limitations of the models used on the site.
+LLMs-full: https://buturi.sandagakuen.jp/llms-full.txt
