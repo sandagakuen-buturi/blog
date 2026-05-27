@@ -1,4 +1,4 @@
-class Api::AuthController < ApplicationController
+class Api::AuthController < ApiApplicationController
   def index
     if @current_user
       safe_user = `@current_user.as_json.except`("password_hashed")
